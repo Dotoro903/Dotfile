@@ -1,0 +1,28 @@
+{
+    "include": "~/.config/waybar/modules",
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/power",
+        "mpris",
+        "custom/cava"
+    ],
+    "modules-center": [
+        //"hyprland/workspaces"
+        "hyprland/workspaces#group1",
+        "custom/separator",
+        "hyprland/workspaces#group2"
+    ],
+    "modules-right": [
+        "custom/spinner",
+        "custom/spinner",
+        "tray",
+        "bluetooth",
+        "network",
+        "battery",
+        "pulseaudio",
+        "clock",
+        "custom/swaync"
+    ]
+}

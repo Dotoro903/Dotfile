@@ -1,0 +1,135 @@
+// Place your key bindings in this file to override the defaults
+// Key Bindings with vim extension
+[
+    { // Vim Extension
+        "key": "ctrl+alt+v",
+        "command": "toggleVim"
+    },
+    { // Arrow keys
+        "key": "alt+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "alt+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    { // Tab Control
+        "key": "alt+]",
+        "command": "workbench.action.nextEditorInGroup",
+    },
+    {
+        "key": "alt+[",
+        "command": "workbench.action.previousEditorInGroup",
+    },
+    {
+        "key": "alt+.",
+        "command": "workbench.action.moveEditorRightInGroup",
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.moveEditorLeftInGroup",
+    },
+    {
+        "key": "alt+shift+]",
+        "command": "workbench.action.moveEditorToNextGroup",
+    },
+    {
+        "key": "alt+shift+[",
+        "command": "workbench.action.moveEditorToPreviousGroup",
+    },
+    { // Tab focus
+        "key": "alt+1",
+        "command": "workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "alt+2",
+        "command": "workbench.action.openEditorAtIndex2"
+    },
+    {
+        "key": "alt+3",
+        "command": "workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "alt+4",
+        "command": "workbench.action.openEditorAtIndex4"
+    },
+    {
+        "key": "alt+5",
+        "command": "workbench.action.openEditorAtIndex5"
+    },
+    {
+        "key": "alt+6",
+        "command": "workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "alt+7",
+        "command": "workbench.action.openEditorAtIndex7"
+    },
+    {
+        "key": "alt+8",
+        "command": "workbench.action.openEditorAtIndex8"
+    },
+    {
+        "key": "alt+9",
+        "command": "workbench.action.openEditorAtIndex9"
+    },
+    {
+        "key": "alt+e",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "alt+q",
+        "command": "workbench.action.focusPreviousGroup"
+    },
+    {
+        "key": "alt+\\",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    { // Focus
+        "key": "alt+/",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+/",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+'",
+        "command": "terminal.focus",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.extensions.action.focusExtensionsView",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "escape",
+        "command": "multi.escapeAndVim",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+/",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    }
+]

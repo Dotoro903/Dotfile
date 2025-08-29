@@ -1,0 +1,238 @@
+{
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "workbench.colorTheme": "Default Dark+",
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<esc>"
+            ],
+            "after": [
+                "<C-[>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [],
+    "vim.visualModeKeyBindingsNonRecursive": [],
+    "multiCommand.commands": [
+        {
+            "command": "multi.escapeAndVim",
+            "sequence": [
+                "hideSuggestWidget",
+                "extension.vim_ctrl+["
+            ]
+        }
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.lineNumbers": "on",
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "workbench.colorCustomizations": {
+        "editor.background": "#1b1a22",
+        "sideBar.background": "#252333",
+        "activityBar.background": "#252333",
+        "editorGroupHeader.tabsBackground": "#252333",
+        "tab.inactiveBackground": "#252333",
+        "titleBar.activeBackground": "#1b1a22",
+        "titleBar.inactiveBackground": "#1b1a22",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveForeground": "#888888",
+        "menu.background": "#1b1a22",
+        "menu.selectionBackground": "#d1006d55",
+        "menu.selectionForeground": "#ffffff",
+        "editorCursor.foreground": "#d1006d",
+        "editor.findMatchBorder": "#d1006d",
+        "editor.findMatchHighlightBackground": "#d1006d22",
+        "editor.selectionBackground": "#d1006d33",
+        "editor.selectionHighlightBackground": "#d1006d22",
+        "editor.wordHighlightBackground": "#d1006d20",
+        "editor.wordHighlightStrongBackground": "#d1006d30",
+        "editorBracketMatch.border": "#d1006d",
+        "editorBracketHighlight.foreground1": "#d1006d",
+        "editorGutter.modifiedBackground": "#d1006d",
+        "editorLineNumber.activeForeground": "#d1006d",
+        "editorSuggestWidget.highlightForeground": "#d1006d",
+        "editorWidget.resizeBorder": "#d1006d",
+        "editorWidget.border": "#d1006d",
+        "tab.activeBorderTop": "#d1006d",
+        "tab.activeForeground": "#ffffff",
+        "tab.inactiveForeground": "#aaaaaa",
+        "tab.border": "#252333",
+        "breadcrumb.activeSelectionForeground": "#d1006d",
+        "activityBarBadge.background": "#d1006d",
+        "activityBar.activeBorder": "#d1006d",
+        "activityBarTop.activeBorder": "#d1006d",
+        "sideBarSectionHeader.foreground": "#d1006d",
+        "list.activeSelectionForeground": "#ffffff",
+        "list.activeSelectionBackground": "#d1006d33",
+        "list.inactiveSelectionBackground": "#d1006d10",
+        "list.highlightForeground": "#d1006d",
+        "list.inactiveSelectionIconForeground": "#d1006d",
+        "settings.modifiedItemIndicator": "#d1006d",
+        "settings.headerForeground": "#ffffff",
+        "panelTitle.activeBorder": "#d1006d",
+        "notification.background": "#1f1d2a",
+        "notification.border": "#d1006d",
+        "notificationLink.foreground": "#d1006d",
+        "statusBar.background": "#1f1c29",
+        "statusBar.noFolderBackground": "#1f1c29",
+        "statusBar.debuggingBackground": "#2a0f19",
+        "statusBarItem.remoteBackground": "#d1006d",
+        "statusBarItem.remoteForeground": "#ffffff",
+        "progressBar.background": "#d1006d",
+        "scrollbarSlider.activeBackground": "#d1006d40",
+        "scrollbarSlider.hoverBackground": "#d1006d30",
+        "sash.hoverBorder": "#d1006d70",
+        "commandCenter.activeBorder": "#d1006d60",
+        "notebook.inactiveFocusedCellBorder": "#d1006d60",
+        "terminal.background": "#252333",
+        "terminal.foreground": "#d1006d",
+        "terminal.selectionBackground": "#d1006d",
+        "panel.background": "#242232",
+        "panel.border": "#2f2c3f",
+        "panelTitle.activeForeground": "#ffffff",
+        "panelTitle.inactiveForeground": "#aaaaaa",
+        "panel.dropBackground": "#d1006d33",
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "string.quoted.docstring",
+                "settings": {
+                    "foreground": "#6c6c8c",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#6c6c8c",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d1006d",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "storage",
+                "settings": {
+                    "foreground": "#d1006d"
+                }
+            },
+            {
+                "scope": "variable",
+                "settings": {
+                    "foreground": "#e6e6f0"
+                }
+            },
+            {
+                "scope": "variable.parameter",
+                "settings": {
+                    "foreground": "#a88ccf"
+                }
+            },
+            {
+                "scope": "entity.name.function",
+                "settings": {
+                    "foreground": "#bb9eff"
+                }
+            },
+            {
+                "scope": "entity.name.type",
+                "settings": {
+                    "foreground": "#c2afff"
+                }
+            },
+            {
+                "scope": "constant.numeric",
+                "settings": {
+                    "foreground": "#e2595d"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#e4846a"
+                }
+            },
+            {
+                "scope": "punctuation.definition.string",
+                "settings": {
+                    "foreground": "#c18ed8"
+                }
+            },
+            {
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#d1006d"
+                }
+            },
+            {
+                "scope": "support.type.property-name",
+                "settings": {
+                    "foreground": "#b0a8d0",
+                }
+            },
+        ]
+    },
+    "editor.fontFamily": "JetBrains Mono NL, Consolas, 'Courier New', monospace",
+    "editor.codeLensFontFamily": "JetBrains Mono NL",
+    "editor.inlayHints.fontFamily": "JetBrains Mono NL",
+    "window.menuBarVisibility": "compact",
+    // Background Image
+    "background.fullscreen": {
+        "useFront": false,
+        "style": {
+            "size": "cover",
+            "position": "center",
+            "background-position": "100% 100%",
+            "background-size": "auto",
+            "opacity": 0.3
+        },
+        "styles": [
+            {},
+            {},
+            {}
+        ],
+        "images": [
+            "file:///home/dotoro/save/wallpaper/main2.jpg"
+        ],
+        "interval": 0,
+        "random": false
+    },
+    // code
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    // javascript
+    "javascript.suggest.completeFunctionCalls": true,
+    // cpp
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSaveMode": "file"
+    },
+    //"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+    "clang-format.style": "{ BasedOnStyle: Google, BreakBeforeBraces: Attach, IndentWidth: 4, ColumnLimit: 0, AccessModifierOffset: -4 }"
+}
