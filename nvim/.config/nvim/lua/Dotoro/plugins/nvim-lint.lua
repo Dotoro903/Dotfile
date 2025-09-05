@@ -10,5 +10,7 @@ return {
 				lint.try_lint()
 			end,
 		})
+
+        lint.linters.shellcheck.args = { "-x" }
 	end,
 }
