@@ -21,6 +21,10 @@ return {
 		config.lua_ls.setup({ capabilities = capabilities })
 		config.clangd.setup({ capabilities = capabilities })
 		config.ts_ls.setup({ capabilities = capabilities })
+		config.emmet.setup({ capabilities = capabilities, filetypes = { 'html' } })
+        config.html.setup({ capabilities = capabilities })
+        config.cssls.setup({ capabilities = capabilities })
+
 
 		-- vim.lsp.enable('clangd')
 	end,
