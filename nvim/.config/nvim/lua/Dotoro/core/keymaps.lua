@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move line up" })
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
@@ -38,3 +38,6 @@ vim.keymap.set(
 	":lua vim.diagnostic.open_float()<CR>",
 	{ noremap = true, silent = true, desc = "Open diagnose" }
 )
+
+vim.keymap.set("n", "<leader>ls", function() require("Dotoro.live").start() end)
+vim.keymap.set("n", "<leader>lS", function() require("Dotoro.live").stop() end)
