@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
@@ -19,6 +18,9 @@ vim.keymap.set("n", "<leader>nn", ":noh<CR>", { noremap = true, silent = true })
 
 vim.keymap.set({ "n", "v" }, "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "G", "Gg_", { noremap = true, silent = true })
+
+vim.keymap.set("n", "]c", "`]", { noremap = true })
+vim.keymap.set("n", "[c", "`[", { noremap = true })
 
 vim.keymap.set("n", "<leader><CR>", "o<ESC>", { noremap = true })
 
@@ -39,5 +41,5 @@ vim.keymap.set(
 	{ noremap = true, silent = true, desc = "Open diagnose" }
 )
 
-vim.keymap.set("n", "<leader>ls", function() require("Dotoro.live").start() end)
-vim.keymap.set("n", "<leader>lS", function() require("Dotoro.live").stop() end)
+vim.keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>lS", ":LiveServerStop<CR>", { noremap = true, silent = true })
