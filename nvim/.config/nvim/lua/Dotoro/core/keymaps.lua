@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 
@@ -32,7 +33,14 @@ vim.keymap.set("i", "<C-o>", "<C-y>", { noremap = true, silent = true, desc = "S
 
 -- tab control
 vim.keymap.set("n", "<A-L>", ":vsp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-J>", ":split<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-W>", ":vsp<CR>", { noremap = true, silent = true })
+
+-- Move split focus
+vim.keymap.set("n", "<C-A-h>", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-A-j>", "<C-w>j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-A-k>", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-A-l>", "<C-w>l", { noremap = true, silent = true })
 
 vim.keymap.set(
 	"n",
