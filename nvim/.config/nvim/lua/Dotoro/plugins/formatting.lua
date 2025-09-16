@@ -8,26 +8,27 @@ return {
 
 			formatters_by_ft = {
                 -- stylua: ignore start
-				lua        = { "stylua" },
-				python     = { "isort", "black" },
-				rust       = { "rustfmt", lsp_format = "fallback" },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier" },
-				json       = { "prettierd", "prettier" },
-				html       = { "prettierd", "prettier" },
-				css        = { "prettierd", "prettier" },
-				markdown   = { "prettierd", "prettier" },
-				yaml       = { "prettierd", "prettier" },
+				lua             = { "stylua" },
+				python          = { "isort", "black" },
+				rust            = { "rustfmt", lsp_format = "fallback" },
+				javascript      = { "prettierd", "prettier", stop_after_first = true },
+				typescript      = { "prettierd", "prettier" },
+				json            = { "prettierd", "prettier" },
+				html            = { "prettierd", "prettier" },
+				css             = { "prettierd", "prettier" },
+				markdown        = { "prettierd", "prettier" },
+				yaml            = { "prettierd", "prettier" },
+                typescriptreact = { "prettierd", "prettier" },
 
-				sh         = { "shfmt" },
-				bash       = { "shfmt" },
-				zsh        = { "shfmt" },
 
-				java       = { "clang-format" },
+				sh              = { "shfmt" },
+				bash            = { "shfmt" },
+				zsh             = { "shfmt" },
 
-				c          = { "clang-format" },
-				cpp        = { "clang-format" },
+				java            = { "clang-format" },
 
+				c               = { "clang-format" },
+				cpp             = { "clang-format" },
 				-- stylua: ignore end
 			},
 		})
