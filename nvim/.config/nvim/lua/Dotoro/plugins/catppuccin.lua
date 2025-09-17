@@ -54,6 +54,7 @@ return {
                 mocha = function(mocha)
                     return {
                         String = { fg = "#e4846a" },
+                        ['@string.special.url.html'] = { fg = "#e4846a" },
                         Number = { fg = "#e2595d" },
                         Constant = { fg = '#e0def4'},
                         Function = { fg = "#bb9eff" },
