@@ -58,12 +58,17 @@ return {
                         Constant = { fg = '#e0def4'},
                         Function = { fg = "#bb9eff" },
                         Type = { fg = "#ebbce7" },
+
                         Import = { fg = "#C586C0" },
+                        ['@keyword.import.cpp'] = { fg = "#C586C0" },
+                        ['@keyword.import'] = { fg = "#C586C0" },
+
                         PreProc = { fg = '#C586C0' },
                         Keyword = { fg = "#b2d3db" },
                         ['@type.builtin'] = { fg = "#89b4f4" },
                         Visual = { bg = "#612d57" },
                         ['@variable.parameter'] = { fg = "#9c96eb", italic = true},
+                        ['@tag.attribute'] = { fg = "#9c96eb" },
                         ['@variable'] = { fg = "#e0def4" },
                         ['@function.builtin'] = { fg = '#f38ba8' },
 
