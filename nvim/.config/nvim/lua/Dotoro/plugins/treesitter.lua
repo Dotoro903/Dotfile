@@ -5,9 +5,9 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
+	priority = 1000,
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			-- 자동으로 설치할 언어들
 			ensure_installed = {
 				"c",
 				"cpp",
@@ -25,29 +25,22 @@ return {
 				"json",
 				"yaml",
 				"markdown",
+				"tsx",
 			},
-
 			sync_install = false,
-
 			modules = {},
-
 			ignore_install = {},
 
-			-- 파일 열 때 자동으로 언어 파서 설치
 			auto_install = true,
 
-			-- 구문 강조 활성화
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 			},
-
-			-- 들여쓰기 개선
 			indent = {
 				enable = true,
 			},
 
-			-- 증분 선택
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -65,6 +58,10 @@ return {
 					keymaps = {
 						["af"] = "@function.outer",
 						["if"] = "@function.inner",
+
+						["ar"] = "@block.outer",
+						["ir"] = "@block.inner",
+
 						["av"] = "@assignment.rhs",
 						["iv"] = "@assignment.rhs",
 					},
