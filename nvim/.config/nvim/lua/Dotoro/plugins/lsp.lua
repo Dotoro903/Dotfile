@@ -25,7 +25,7 @@ return {
 
 		config.lua_ls.setup({ capabilities = capabilities })
 		config.clangd.setup({ capabilities = capabilities })
-		config.emmet.setup({ capabilities = capabilities, filetypes = { "html" } })
+		config.emmet_language_server.setup({ capabilities = capabilities, filetypes = { "html" } })
 
 		config.ts_ls.setup({
 			capabilities = capabilities,

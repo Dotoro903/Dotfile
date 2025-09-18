@@ -71,7 +71,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", priority = 1000 },
-					{ name = "emmet", priority = 800 },
+					{ name = "emmet_language_server", priority = 800 },
 					{ name = "luasnip", priority = 750 },
 					{ name = "buffer", priority = 500 },
 					{ name = "path", priority = 250 },
