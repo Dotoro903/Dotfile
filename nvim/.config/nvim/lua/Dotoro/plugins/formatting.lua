@@ -11,7 +11,7 @@ return {
 				lua             = { "stylua" },
 				python          = { "isort", "black" },
 				rust            = { "rustfmt", lsp_format = "fallback" },
-				javascript      = { "prettierd", "prettier", stop_after_first = true },
+				javascript      = { "prettierd", "prettier" },
 				typescript      = { "prettierd", "prettier" },
 				json            = { "prettierd", "prettier" },
 				html            = { "prettierd", "prettier" },
@@ -19,6 +19,7 @@ return {
 				markdown        = { "prettierd", "prettier" },
 				yaml            = { "prettierd", "prettier" },
                 typescriptreact = { "prettierd", "prettier" },
+                javascriptreact = { "prettierd", "prettier" },
 
 
 				sh              = { "shfmt" },

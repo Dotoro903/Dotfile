@@ -45,6 +45,12 @@ return {
 				disable_formatting(client)
 			end,
 		})
+		config.eslint.setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				disable_formatting(client)
+			end,
+		})
 
 		-- vim.lsp.enable('clangd')
 	end,
