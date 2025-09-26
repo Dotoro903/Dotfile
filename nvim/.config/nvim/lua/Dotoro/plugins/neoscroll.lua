@@ -1,8 +1,0 @@
--- return {
--- 	"karb94/neoscroll.nvim",
--- 	opts = {
--- 		duration_multiplyer = 0.1,
--- 		easing = "leaner",
--- 		performance_mode = true,
--- 	},
--- }
