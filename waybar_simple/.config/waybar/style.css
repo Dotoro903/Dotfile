@@ -158,6 +158,8 @@ tooltip {
 
 #custom-chevron {
   padding: 0 12px;
+  background-color: alpha(@select, 0.3);
+  border-radius: 99px;
 }
 
 #custom-chevron:hover {
