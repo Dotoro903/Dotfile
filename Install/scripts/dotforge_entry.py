@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-import printer
+import flow
 
 def main():
-    print("hello world from dotforge entry")
-    print(printer.foreword)
+    flow.mainflow()
 
 if __name__ == '__main__':
     main()

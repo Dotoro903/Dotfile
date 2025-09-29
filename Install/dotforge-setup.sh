@@ -3,9 +3,6 @@
 dotforge_entry_path="./scripts/dotforge_entry.py"
 python_exec=$(command -v python || command -v python3)
 
-CHECK="✔"
-CROSS="✘"
-
 vertify_reply() {
     local reply=$1;
     shopt -s nocasematch
@@ -30,10 +27,10 @@ print_suc() { echo -e "\e[32m$1\e[0m"; }
 check_requirements() {
     local missing=();
     if [[ $python_exec == "" ]]; then
-        print_err "python not detected... $CROSS"
+        print_err "checking requirement: python ... [MISSING]"
         missing+=("python")
     else
-        print_suc "python detected... $CHECK"
+        print_suc "checking requirement: python ... [OK]"
     fi
 
     echo

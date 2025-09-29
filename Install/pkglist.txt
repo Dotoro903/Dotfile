@@ -1,1 +1,2 @@
-shellcheck
+stow
+python python3
