@@ -1,9 +1,11 @@
 return {
 	"mfussenegger/nvim-lint",
 	config = function()
-		local lint = require('lint')
+		local lint = require("lint")
 		lint.linters_by_ft = {
 			sh = { "shellcheck" },
+			-- python = { "pylint" },
+			javascript = { "eslint_d" },
 		}
 		vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufEnter" }, {
 			callback = function()
@@ -11,6 +13,6 @@ return {
 			end,
 		})
 
-        lint.linters.shellcheck.args = { "-x" }
+		lint.linters.shellcheck.args = { "-x" }
 	end,
 }
