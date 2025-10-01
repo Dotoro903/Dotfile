@@ -1,13 +1,32 @@
 #!/usr/bin/env python3
 
+import sys
+import termios
+import tty
+
 import printer
 
-def mainflow():
-    # print(printer.foreword)
+def setcursor(row, col):
+    sys.stdout.write(f'\x1b[{row};{col}H')
+    sys.stdout.flush()
 
-    print("Options: ")
-    print("1. Install Dotfile")
-    print("2. Install Package")
-    print("3. Update Dotfile")
-    print("4. Update Package")
-    print("5. Construct Home")
+def mainflow():
+    print(printer.install_options)
+
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        tty.setcbreak(fd)
+
+
+        sys.stdout.write('\x1b[0G')
+        sys.stdout.flush()
+        sys.stdout.write('\x1b[5A')
+        sys.stdout.flush()
+
+        k = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+    print(k)

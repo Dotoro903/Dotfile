@@ -19,3 +19,10 @@ It may not work on other system. I suggest to use it only as reference
 
 ================================================================================
 """
+
+install_options = """Options: 
+1. Install Dotfile
+2. Install Package
+3. Update Dotfile
+4. Update Package
+5. Construct Home"""
