@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+"""
+Selman: interactive selection manager.
+- Preserves behavior and key bindings.
+- Minor cleanups, explicit typing, small safety improvements.
+"""
 import sys
 import termios
 import tty
@@ -18,7 +22,7 @@ class Selman:
     def __init__(
         self,
         selection: List[str],
-        col_offset=0,
+        col_offset: int = 0,
         allow_multiple_selection: bool = False,
         mutex_group: Optional[set[frozenset]] = None,
     ):
@@ -55,6 +59,7 @@ class Selman:
 
     def run(self) -> str | None:
         """
+        This function is the main entry of Selman
         returns name of single selection if allow_multilple_selection is False
         returns None if allow_multilple_selection is True, the result stores in sel_board
         """
@@ -103,8 +108,7 @@ class Selman:
         action = self.key_events.get(k)
         if action:
             return action()
-        else:
-            pass
+        return None
 
     def get_relative_pos_by_index(self, index: int) -> int:
         return index - self.current_index
@@ -162,7 +166,7 @@ class Selman:
 
     def get_opposite_mutex_index(self, target_index: int) -> int | None:
         if self.mutex_group is None:
-            return
+            return None
 
         opposite: int | None = None
         for s in self.mutex_group:
@@ -172,13 +176,13 @@ class Selman:
 
         return opposite
 
-    def ban_selection_by_index(self, target_index: int, do_render : bool = True):
+    def ban_selection_by_index(self, target_index: int, do_render: bool = True) -> None:
         if do_render:
             self.render_text_effect(TextEffect.BANNED, target_index)
         self.sel_board[self.selection[target_index]] = False
         self.banned_board[self.selection[target_index]] = True
 
-    def unban_selection_by_index(self, target_index: int, do_render : bool = True):
+    def unban_selection_by_index(self, target_index: int, do_render: bool = True) -> None:
         if do_render:
             self.render_text_effect(TextEffect.UNFOCUSED, target_index)
         self.banned_board[self.selection[target_index]] = False

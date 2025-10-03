@@ -14,7 +14,7 @@ def setcursor(row, col):
 def mainflow():
     sel = Selman(
         assets.install_options_list,
-        5,
+        col_offset=5,
         allow_multiple_selection=True,
         mutex_group=assets.install_options_mutex,
     )

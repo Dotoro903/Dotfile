@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-
 from enum import Enum, auto
 import sys
-from typing import Optional
+from typing import Optional, Callable
 
 import ansi_control
 
@@ -27,6 +26,9 @@ def _restore_cursor_pos_col(col_offset: int):
 
 
 def write_line(text: str, color_code: Optional[str] = None, restore_style=True):
+    """Write a text line with optional color.
+    When restore_style is True, reset SGR after the text.
+    """
     if color_code is None:
         sys.stdout.write(text)
         return
@@ -36,84 +38,58 @@ def write_line(text: str, color_code: Optional[str] = None, restore_style=True):
     sys.stdout.write(f"\x1b[{color_code}m" + text)
 
 
-def print_unfocused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None):
+def _render_at_row(
+    relative_pos: Optional[int], col_offset: int, draw: Callable[[], None]
+) -> None:
+    """Render using draw() optionally at a relative row, then restore column."""
     if relative_pos is not None:
         restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+        try:
+            draw()
+        finally:
+            restore_pos()
+            _restore_cursor_pos_col(col_offset)
+    else:
+        draw()
+        _restore_cursor_pos_col(col_offset)
+
+
+def print_unfocused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line(f"○ {text}", FG["muted"])
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-    write_line(f"○ {text}", FG["muted"])
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
-def print_focused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None):
-    if relative_pos is not None:
-        restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+def print_focused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line(f"● {text}", FG["accent"])
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-
-    write_line(f"● {text}", FG["accent"])
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
-def print_selected(text: str, col_offset: int = 0, relative_pos: Optional[int] = None):
-    if relative_pos is not None:
-        restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+def print_selected(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line(f"● {text}", FG["selected"])
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-
-    write_line(f"● {text}", FG["selected"])
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
-def print_selected_focused(
-    text: str, col_offset: int = 0, relative_pos: Optional[int] = None
-):
-    if relative_pos is not None:
-        restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+def print_selected_focused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line("● ", FG["accent"])
         write_line(text, FG["selected"])
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-
-    write_line("● ", FG["accent"])
-    write_line(text, FG["selected"])
-
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
-def print_banned_focused(
-    text: str, col_offset: int = 0, relative_pos: Optional[int] = None
-):
-    if relative_pos is not None:
-        restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+def print_banned_focused(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line("\x1b[9m● ", FG["accent"], restore_style=False)
         write_line(text + "\x1b[0m", FG["accent"], restore_style=False)
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-    write_line("\x1b[9m● ", FG["accent"], restore_style=False)
-    write_line(text + "\x1b[0m", FG["accent"], restore_style=False)
-
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
-def print_banned(text: str, col_offset: int = 0, relative_pos: Optional[int] = None):
-    if relative_pos is not None:
-        restore_pos = ansi_control.move_cursor_by_relative_pos_row(relative_pos)
+def print_banned(text: str, col_offset: int = 0, relative_pos: Optional[int] = None) -> None:
+    def draw():
         write_line(f"\x1b[9m○ {text}\x1b[29m", FG["muted"])
-        restore_pos()
-        _restore_cursor_pos_col(col_offset)
-        return
-
-    write_line(f"\x1b[9m○ {text}\x1b[29m", FG["muted"])
-    _restore_cursor_pos_col(col_offset)
+    _render_at_row(relative_pos, col_offset, draw)
 
 
 print_effect = {
@@ -131,5 +107,5 @@ def print_text_effect(
     effect: TextEffect,
     col_offset: int = 0,
     relative_pos: Optional[int] = None,
-):
+) -> None:
     print_effect[effect](text, col_offset, relative_pos)
