@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
 
 import sys
-import termios
-import tty
 
-import printer
+from selman import Selman
+import assets
+
 
 def setcursor(row, col):
-    sys.stdout.write(f'\x1b[{row};{col}H')
+    sys.stdout.write(f"\x1b[{row};{col}H")
     sys.stdout.flush()
 
+
 def mainflow():
-    print(printer.install_options)
+    sel = Selman(
+        assets.install_options_list,
+        5,
+        allow_multiple_selection=True,
+        mutex_group=assets.install_options_mutex,
+    )
+    sel.run()
 
-    fd = sys.stdin.fileno()
-    old = termios.tcgetattr(fd)
-    try:
-        tty.setraw(fd)
-        tty.setcbreak(fd)
-
-
-        sys.stdout.write('\x1b[0G')
-        sys.stdout.flush()
-        sys.stdout.write('\x1b[5A')
-        sys.stdout.flush()
-
-        k = sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
-    print(k)
+    print("you selected: ")
+    for i in sel.sel_board:
+        if sel.sel_board[i]:
+            print(i)
