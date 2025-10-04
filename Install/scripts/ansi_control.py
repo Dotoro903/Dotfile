@@ -59,6 +59,14 @@ def move_cursor_by_relative_pos_row(relative_pos_row: int) -> Callable[[], None]
 def set_cursor_visibility(is_visible: bool) -> None:
     sys.stdout.write("\x1b[?25h" if is_visible else "\x1b[?25l")
 
+def erase_line(col_offset: int) -> None:
+    sys.stdout.write("\x1b[2K")
+    set_col_offset(col_offset)
+    
+
+def enable_autowrap(enabled: bool) -> None:
+    sys.stdout.write("\x1b[?7h" if enabled else "\x1b[?7l")
+
 
 def set_col_offset(offset: int) -> None:
     if offset < 0:

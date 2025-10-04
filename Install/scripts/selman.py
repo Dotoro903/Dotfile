@@ -25,11 +25,15 @@ class Selman:
         col_offset: int = 0,
         allow_multiple_selection: bool = False,
         mutex_group: Optional[set[frozenset]] = None,
+        footer_comments: Optional[List[str]] = None,
+        wipe_comments_after_select: bool = True,
     ):
         self.selection = selection
         self.col_offset = col_offset
         self.mutex_group = mutex_group
         self.allow_multiple_selection = allow_multiple_selection
+        self.footer_comments = footer_comments
+        self.wipe_comments_after_select = wipe_comments_after_select
 
         self.current_index = 0
 
@@ -57,6 +61,28 @@ class Selman:
     def terminate(self) -> None:
         self._terminate = True
 
+    def print_comments(self) -> None:
+        if self.footer_comments is None:
+            return
+
+        for c in self.footer_comments:
+            ansi_control.set_col_offset(self.col_offset)
+            write_line(c)
+            print()
+
+    def wipe_comments(self) -> None:
+        if self.footer_comments is None:
+            return
+        dist = (len(self.selection) - self.current_index)
+        try:
+            ansi_control.cursor_down(dist)
+            ansi_control.erase_line(self.col_offset)
+            sys.stdout.flush()
+        finally:
+            ansi_control.cursor_up(dist)
+            sys.stdout.flush()
+        sys.stdout.flush()
+
     def run(self) -> str | None:
         """
         This function is the main entry of Selman
@@ -77,12 +103,16 @@ class Selman:
             tty.setcbreak(fd)
 
             ansi_control.set_cursor_visibility(False)
+            ansi_control.enable_autowrap(False)
 
             if self.allow_multiple_selection:
                 ansi_control.set_col_offset(self.col_offset)
-                write_line("press 'n' to proceed..")
+                # write_line("press 'n' to proceed..")
+
+            self.print_comments()
 
             self.initialize_focus()
+
             sys.stdout.flush()
 
             while True:
@@ -91,15 +121,25 @@ class Selman:
                 sys.stdout.flush()
 
                 if self._terminate:
-                    return last_selection
-
+                    break
         finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+            if self.wipe_comments_after_select:
+                self.wipe_comments()
 
             initial_cursor_relative_pos = len(self.selection) - self.current_index
             ansi_control.cursor_down(initial_cursor_relative_pos)
 
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
             ansi_control.set_cursor_visibility(True)
+            ansi_control.enable_autowrap(True)
+
+            print()
+
+        if self.allow_multiple_selection:
+            return last_selection
+        return None
 
     def manage_key_input(self, k: bytes) -> str | None:
         if ansi_control.is_ansi_key(k):
@@ -115,9 +155,13 @@ class Selman:
 
     def initialize_focus(self) -> None:
         selection_count = len(self.selection)
+        result_offset = selection_count
+        if self.footer_comments is not None:
+            comment_line_count = len(self.footer_comments)
+            result_offset += comment_line_count
 
         ansi_control.set_col_offset(self.col_offset)
-        ansi_control.cursor_up(selection_count)
+        ansi_control.cursor_up(result_offset)
 
         self.render_text_effect(TextEffect.FOCUSED)
 
@@ -182,7 +226,9 @@ class Selman:
         self.sel_board[self.selection[target_index]] = False
         self.banned_board[self.selection[target_index]] = True
 
-    def unban_selection_by_index(self, target_index: int, do_render: bool = True) -> None:
+    def unban_selection_by_index(
+        self, target_index: int, do_render: bool = True
+    ) -> None:
         if do_render:
             self.render_text_effect(TextEffect.UNFOCUSED, target_index)
         self.banned_board[self.selection[target_index]] = False
