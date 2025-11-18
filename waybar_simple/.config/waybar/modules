@@ -4,7 +4,7 @@
         "tooltip": false,
         "on-click": "wlogout -b 5"
     },
-    "hyprland/workspaces#group1": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
@@ -12,23 +12,22 @@
         "persistent-workspaces": {
             "*": [
                 1,
-                6,
+                11,
             ]
         },
-    },
-    "hyprland/workspaces#group2": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{icon}",
-        "persistent-workspaces": {
-            "*": [
-                6,
-            ]
+        "format-icons": {
+            "11": "一",
+            "12": "二",
+            "13": "三",
+            "14": "四",
+            "15": "五",
+            "16": "六",
+            "17": "七",
+            "18": "八",
+            "19": "九",
+            "20": "十",
         },
-        "persistent-only": true
     },
-
     "group/sys": {
         "orientation": "horizontal",
         "drawer": {

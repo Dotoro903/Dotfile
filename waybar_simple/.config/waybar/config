@@ -10,7 +10,7 @@
         "custom/cava",
     ],
     "modules-center": [
-        "hyprland/workspaces#group1",
+        "hyprland/workspaces",
     ],
     "modules-right": [
         "group/sys",
