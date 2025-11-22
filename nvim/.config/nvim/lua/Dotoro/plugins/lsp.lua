@@ -20,44 +20,53 @@ return {
             client.server_capabilities.documentRangeFormattingProvider = false
         end
 
-        local config = require("lspconfig")
+        -- local config = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         capabilities.workspace = capabilities.workspace or {}
         capabilities.workspace.didChangeWatchedFiles = { dynamicRegistration = true }
 
-        config.lua_ls.setup({ capabilities = capabilities })
-        config.clangd.setup({ capabilities = capabilities })
-        config.emmet_language_server.setup({ capabilities = capabilities })
+        vim.lsp.config["lua_ls"] = { capabilities = capabilities }
+        vim.lsp.config["clangd"] = { capabilities = capabilities }
+        vim.lsp.config["emmet_language_server"] = { capabilities = capabilities }
 
-        config.pyright.setup({
+        vim.lsp.config["pyright"] = {
             capabilities = capabilities,
-        })
+        }
 
-        config.ts_ls.setup({
+        vim.lsp.config["ts_ls"] = {
+            capabilities = capabilities,
+            on_attach = function(client, bufnr)
+                disable_formatting(client)
+                print("flalfkdkjkjkjqkweqweqwewqeqwekjqwkejkej")
+            end,
+            settings = {
+                ts_ls = {
+                    quiet = true,
+                },
+            },
+        }
+        vim.lsp.config["html"] = {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
                 disable_formatting(client)
             end,
-        })
-        config.html.setup({
+        }
+        vim.lsp.config["cssls"] = {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
                 disable_formatting(client)
             end,
-        })
-        config.cssls.setup({
+        }
+        vim.lsp.config["eslint"] = {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
                 disable_formatting(client)
             end,
-        })
-        config.eslint.setup({
-            capabilities = capabilities,
-            on_attach = function(client, bufnr)
-                disable_formatting(client)
-            end,
-        })
-
-        -- vim.lsp.enable('clangd')
+            settings = {
+                eslint = {
+                    quiet = true,
+                },
+            },
+        }
     end,
 }
