@@ -11,7 +11,7 @@ return {
             },
             transparent_background = true, -- disables setting the background color.
             float = {
-                transparent = false,        -- enable transparent floating windows
+                transparent = false,       -- enable transparent floating windows
                 solid = false,             -- use solid styling for floating windows, see |winborder|
             },
             show_end_of_buffer = false,    -- shows the '~' characters after the end of buffers
@@ -53,33 +53,41 @@ return {
             highlight_overrides = {
                 mocha = function(mocha)
                     return {
-                        String = { fg = "#e4846a" },
+                        -- String = { fg = "#e4846a" },
+                        String                       = { fg = "#9c96eb" },
                         ['@string.special.url.html'] = { fg = "#e4846a" },
-                        Number = { fg = "#e2595d" },
-                        Constant = { fg = '#e0def4'},
-                        Function = { fg = "#bb9eff" },
-                        Type = { fg = "#ebbce7" },
+                        Number                       = { fg = "#e2595d" },
+                        Constant                     = { fg = '#e0def4' },
+                        Function                     = { fg = "#bb9eff" },
+                        Type                         = { fg = "#ebbce7" },
 
-                        Import = { fg = "#C586C0" },
-                        ['@keyword.import.cpp'] = { fg = "#C586C0" },
-                        ['@keyword.import'] = { fg = "#C586C0" },
+                        Import                       = { fg = "#C586C0" },
+                        ['@keyword.import.cpp']      = { fg = "#C586C0" },
+                        ['@keyword.import']          = { fg = "#C586C0" },
 
-                        PreProc = { fg = '#C586C0' },
-                        Keyword = { fg = "#b2d3db" },
-                        ['@type.builtin'] = { fg = "#89b4f4" },
-                        Visual = { bg = "#612d57" },
-                        ['@variable.parameter'] = { fg = "#9c96eb", italic = true},
-                        ['@tag.attribute'] = { fg = "#9c96eb" },
-                        ['@variable'] = { fg = "#e0def4" },
-                        ['@function.builtin'] = { fg = '#f38ba8' },
+                        PreProc                      = { fg = '#C586C0' },
+                        Keyword                      = { fg = "#b2d3db" },
+                        ['@type.builtin']            = { fg = "#89b4f4" },
+                        Visual                       = { bg = "#612d57" },
+                        ['@variable.parameter']      = { fg = "#9c96eb", italic = true },
+                        ['@tag.attribute']           = { fg = "#9c96eb" },
+                        ['@variable']                = { fg = "#e0def4" },
+                        ['@function.builtin']        = { fg = '#f38ba8' },
 
-                        Comment = { fg = "#6C6C8C"},
+                        Comment                      = { fg = "#6C6C8C" },
 
-                        Repeat = { fg = "#89b4f4" },
-                        Conditional = { fg = "#89b4f4" },
-                        ['@keyword.return'] = { fg = "#89b4f4" },
-                        Operator = { fg = '#e6e6f0' },
+                        Repeat                       = { fg = "#89b4f4" },
+                        Conditional                  = { fg = "#89b4f4" },
+                        ['@keyword.return']          = { fg = "#89b4f4" },
+                        Operator                     = { fg = '#e6e6f0' },
 
+                        LineNr                       = { fg = "#A0A0A0" },
+                        CursorLineNr                 = { fg = "#ebbce7" },
+
+                        WinSeparator                 = { fg = "#808080", bg = "NONE" },
+                        VertSplit                    = { fg = "#808080", bg = "NONE" },
+
+                        CursorLine                   = { bg = "NONE" },
                     }
                 end
             },
