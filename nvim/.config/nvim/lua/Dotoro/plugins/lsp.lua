@@ -37,7 +37,6 @@ return {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
                 disable_formatting(client)
-                print("flalfkdkjkjkjqkweqweqwewqeqwekjqwkejkej")
             end,
             settings = {
                 ts_ls = {
