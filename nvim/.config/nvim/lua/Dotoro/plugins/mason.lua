@@ -16,7 +16,7 @@ return {
 
         config = function()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'lua_ls', 'pyright', 'clangd', 'rust_analyzer', 'bashls', 'ts_ls', 'eslint' },
+                ensure_installed = { 'lua_ls', 'pyright', 'clangd', 'rust_analyzer', 'bashls', 'ts_ls', 'eslint', "docker_language_server" },
                 automatic_installation = true,
                 -- automatic_enable = false,
             })
