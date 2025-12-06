@@ -16,5 +16,7 @@ elif [ ${#cpp_files[@]} -gt 1 ]; then
 elif [ ${#cpp_files[@]} -eq 0 ]; then
     printf "\x1b[31mNo C++ files found.\x1b[0m"
 fi
+
+echo
 shopt -u nullglob
 
