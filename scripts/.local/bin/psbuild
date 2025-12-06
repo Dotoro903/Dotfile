@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Check if there is any c++ file in the current direcotory, and if so, compile it using g++ and print "success" if the compilation is successful, otherwise print "failure".
+shopt -s nullglob
+cpp_files=(*.cpp)
+
+if [ ${#cpp_files[@]} -eq 1 ]; then
+    g++ "${cpp_files[@]}" -o main
+    if  g++ "${cpp_files[@]}" -o main; then
+        printf "\x1b[32msuccess\x1b[0m"
+    else 
+        printf "\x1b[31mfailure\x1b[0m"
+    fi
+elif [ ${#cpp_files[@]} -gt 1 ]; then
+    printf "\x1b[31mMultiple C++ files found.\x1b[0m"
+elif [ ${#cpp_files[@]} -eq 0 ]; then
+    printf "\x1b[31mNo C++ files found.\x1b[0m"
+fi
+shopt -u nullglob
+
