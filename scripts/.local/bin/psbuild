@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Check if there is any c++ file in the current direcotory, and if so, compile it using g++ and print "success" if the compilation is successful, otherwise print "failure".
 shopt -s nullglob
 cpp_files=(*.cpp)
 
