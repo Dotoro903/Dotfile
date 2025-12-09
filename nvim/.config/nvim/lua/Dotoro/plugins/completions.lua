@@ -50,6 +50,20 @@ return {
                         select = true,
                     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
 
                     -- ["<Tab>"] = cmp.mapping(function(fallback)
                     --     if cmp.visible() then
@@ -92,9 +106,9 @@ return {
                             return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
                         end
                     },
-                    { name = "luasnip",  priority = 750 },
-                    { name = "buffer",   priority = 500 },
-                    { name = "path",     priority = 250 },
+                    { name = "luasnip", priority = 750 },
+                    { name = "buffer",  priority = 500 },
+                    { name = "path",    priority = 250 },
 
                 }),
             })
