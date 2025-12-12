@@ -122,5 +122,10 @@ ls.add_snippets("cpp", {
         rep(4),
         t("];"),
         t({ "", "}" }),
+    }),
+
+    -- long long snippet
+    s("ll", {
+        t("long long ")
     })
 })
