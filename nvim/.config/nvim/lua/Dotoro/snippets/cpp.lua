@@ -126,6 +126,6 @@ ls.add_snippets("cpp", {
 
     -- long long snippet
     s("ll", {
-        t("long long ")
+        t("long long")
     })
 })
