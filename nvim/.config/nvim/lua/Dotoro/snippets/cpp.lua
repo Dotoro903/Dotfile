@@ -3,11 +3,7 @@ local ls, s, t, i, rep = C.ls, C.s, C.t, C.i, C.rep
 
 local function solve_snip(trigger, ret_type, default_ret, main_body)
     return s(trigger, {
-        t({
-            "#include <bits/stdc++.h>",
-            "#include <algorithm>",
-            "",
-        }),
+        t({ "#include <bits/stdc++.h>", "" }),
         t({ "using namespace std;", "", "" }),
 
         t(ret_type .. " solve() {"),
@@ -30,11 +26,7 @@ end
 ls.add_snippets("cpp", {
     -- plain main
     s("ps", {
-        t({
-            "#include <bits/stdc++.h>",
-            "#include <algorithm>",
-            "",
-        }),
+        t({ "#include <bits/stdc++.h>", ""}),
         t({ "", "using namespace std;", "" }),
 
         t({ "", "int main(void) {",
