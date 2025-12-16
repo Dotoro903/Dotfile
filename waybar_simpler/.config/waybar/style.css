@@ -71,7 +71,8 @@ tooltip {
 
 #workspaces button.active {
   color: @selectborder;
-  border-bottom: 2px solid @selectborder;
+  /* border-bottom: 2px solid @selectborder; */
+  box-shadow: inset 0 -2px 0 0 @selectborder;
   transition: all 0.3s;
 }
 
