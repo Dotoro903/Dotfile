@@ -17,9 +17,6 @@ end)
 
 vim.keymap.set("n", "<leader>nn", ":noh<CR>", { noremap = true, silent = true })
 
-vim.keymap.set({ "n", "v" }, "gg", "gg_", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "G", "Gg_", { noremap = true, silent = true })
-
 vim.keymap.set("n", "]c", "`]", { noremap = true })
 vim.keymap.set("n", "[c", "`[", { noremap = true })
 
