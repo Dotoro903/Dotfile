@@ -4,6 +4,6 @@ return {
 	opts = {
 		floating_window = false,
 		hint_enable = true,
-		toggle_key = "<C-k>",
+		toggle_key = "<M-k>",
 	},
 }
