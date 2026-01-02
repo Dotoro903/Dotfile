@@ -9,6 +9,7 @@
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{icon}",
+        "show-special": true,
         "persistent-workspaces": {
             "*": [
                 1,
@@ -26,6 +27,10 @@
             "18": "八",
             "19": "九",
             "20": "十",
+            "a": "◀",
+            "b": "▼",
+            "c": "▲",
+            "d": "▶",
         },
     },
     "tray": {
