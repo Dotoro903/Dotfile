@@ -1,0 +1,19 @@
+[Default Applications]
+inode/directory=org.kde.dolphin.desktop
+
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/webp=imv.desktop
+image/gif=imv.desktop
+image/bmp=imv.desktop
+
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+
+video/mp4=vlc.desktop
+video/mpeg=vlc.desktop
+video/webm=vlc.desktop
+video/x-matroska=vlc.desktop
+video/avi=vlc.desktop
+video/quicktime=vlc.desktop 
