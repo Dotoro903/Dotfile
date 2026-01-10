@@ -27,6 +27,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- set cmdheight to 1 when recording
+vim.api.nvim_create_autocmd("RecordingEnter", {
+  group = vim.api.nvim_create_augroup("CmdheightWhileRec", { clear = true }),
+  callback = function() vim.opt.cmdheight = 1 end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+  group = "CmdheightWhileRec",
+  callback = function() vim.opt.cmdheight = 0 end,
+})
+
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
