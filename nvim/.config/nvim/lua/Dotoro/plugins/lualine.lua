@@ -14,7 +14,7 @@ return {
 			black = "#b996e3",
 			white = "#2c3043",
 			light_green = "#6b64b3",
-			orange = "#c27480",
+			orange = "#cc528d",
 			green = "#8ec07c",
 		}
 
@@ -26,7 +26,7 @@ return {
 				z = { fg = colors.white, bg = colors.black },
 			},
 			insert = { a = { fg = colors.black, bg = colors.light_green } },
-			visual = { a = { fg = colors.black, bg = colors.orange } },
+			visual = { a = { fg = colors.white, bg = colors.orange } },
 			replace = { a = { fg = colors.black, bg = colors.green } },
 		}
 
