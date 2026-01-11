@@ -1,11 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
-
-vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
-
 vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true, silent = true })
 
