@@ -302,12 +302,12 @@ web_client {
 //   - true
 //   - false (Default)
 // 
-// simplified_ui true
+simplified_ui true
  
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "catppuccin-frappe"
+theme "iceberg-dark"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -326,7 +326,7 @@ theme "catppuccin-frappe"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-default_layout "disable-status-bar"
+// default_layout "disable-status-bar"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
