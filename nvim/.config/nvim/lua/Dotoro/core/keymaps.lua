@@ -19,8 +19,6 @@ vim.keymap.set("n", "<leader><CR>", "o<ESC>", { noremap = true })
 
 -- autocomplete
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { noremap = true, silent = true, desc = "Trigger completion" })
--- vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true, silent = true, desc = 'Next completion' })
--- vim.keymap.set('i', '<C-k>', '<C-p>', { noremap = true, silent = true, desc = 'Previous completion' })
 vim.keymap.set("i", "<C-o>", "<C-y>", { noremap = true, silent = true, desc = "Select completion" })
 
 -- tab control
