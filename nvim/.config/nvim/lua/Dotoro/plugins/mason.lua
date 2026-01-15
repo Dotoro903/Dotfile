@@ -28,8 +28,6 @@ return {
 					"dockerls",
 					"emmet_language_server",
 					"html",
-					-- 'eslint_d',
-					-- 'prettierd',
 				},
 				automatic_installation = true,
 				-- automatic_enable = false,
@@ -46,6 +44,7 @@ return {
 					"prettier",
 					"stylua",
 					"eslint_d",
+					"shfmt",
 				},
 				auto_update = false,
 			})
