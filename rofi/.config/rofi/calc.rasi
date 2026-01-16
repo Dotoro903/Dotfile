@@ -1,0 +1,9 @@
+@import "applauncher.rasi"
+
+entry {
+    placeholder: "Calculate";
+}
+
+listview {
+    enabled: false;
+}

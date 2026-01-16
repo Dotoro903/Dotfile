@@ -1,0 +1,5 @@
+@import "applauncher.rasi"
+
+entry {
+    placeholder: "Clipboard";
+}

@@ -1,0 +1,16 @@
+* {
+    selected-normal-background: rgba(100, 110, 180, 1);
+    separator: rgba(100, 110, 180, 1);
+    window-background: rgba(25, 25, 35, 0.85);
+    window-border-color: rgba(140, 180, 230, 1);
+    inputbar-background: rgba(60, 70, 100, 0.8);
+    element-background: rgba(0, 0, 0, 0);
+    element-active-color: rgba(180, 100, 150, 0.5);
+    text-color-selected: rgba(0, 0, 0, 1);
+    text-color-normal: rgba(255, 255, 255, 1);
+    text-color-gray: rgba(160, 160, 160, 0.8);
+
+    message-color: rgba(50, 50, 70, 0.4);
+
+    background-color: transparent;
+}

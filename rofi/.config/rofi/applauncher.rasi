@@ -1,0 +1,167 @@
+@theme "dark-violet.rasi"
+
+configuration {
+    modes: [ combi, drun ];
+    combi-modes: [ window, drun];
+}
+
+* {
+    font: "Inter Bold 12";
+
+    margin: 0px;
+    padding: 0px;
+}
+
+inputbar {
+    children: [ entry, num-filtered-rows, textbox-num-sep, num-rows ];
+    background-color: @inputbar-background;
+    padding: 0.6em 1.5em 0.6em 0;
+    margin: 0.5em;
+    border-radius: 25px 25px 5px 5px;
+    border-radius: 25px;
+}
+
+entry {
+    font: "Inter ExtraBold 12";
+    placeholder: "Applications";
+    placeholder-color: @text-color-gray;
+    // hide-cursor-on-empty: true;
+    expand: true;
+    padding: 0.3em 1.5em;
+    border: 0;
+    color: @text-color-normal;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+num-filtered-rows,
+num-rows,
+textbox-num-sep
+{
+    enabled: true;
+    vertical-align: 0.5;
+    color: @text-color-gray;
+    expand: false;
+}
+
+textbox-num-sep {
+    str: " / ";
+}
+
+
+// Disableed
+prompt,
+case-indicator,
+icon-current-entry,
+textbox-prompt-colon,
+mode-switcher,
+{
+    enabled: false;
+}
+
+scrollbar {
+    enabled: false;
+    background-color: transparent;
+    handle-color: transparent;
+    handle-width: 0px;
+    width: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+listview {
+    padding: 1% 0;
+    margin: 0;
+    border: 0;
+    fixed-height: true;
+    lines: 6;
+    margin: 0 0.5%;
+}
+
+element {
+    orientation: horizontal;
+    children: [ element-icon, element-text ];
+    spacing: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: @element-background;
+}
+
+element.normal.normal {
+    background-color: @element-background;
+}
+
+element.alternate.normal {
+    background-color: @element-background;
+}
+
+element.selected.active,
+element.selected.normal 
+{
+    border: 0px;
+    background-color: @selected-normal-background;
+}
+
+element.selected.active {
+    border: 3px;
+    border-color: @element-active-color;
+}
+
+element.alternate.active,
+element.normal.active {
+    border: 3px;
+    border-color: @element-active-color;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 2em;
+}
+
+element-text {
+    vertical-align: 0.5;
+    color: @text-color-normal;
+}
+
+element-text.selected {
+    color: @text-color-selected;
+}
+
+window {
+    background-color: @window-background;
+    children: [ mainbox ];
+    border: 2px;
+    border-color: @window-border-color;
+    border-radius: 35px;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+}
+
+mainbox {
+    background-color: transparent;
+    border: 0;
+}
+
+message {
+    border: 0px;
+    padding: 1em 1em 1em 1em;
+    fixed-height: true;
+    lines: 6;
+    margin: 0 0.5% 0.5em 0.5%;
+
+    border-radius: 15px;
+    border-color: @text-color-selected;
+
+    background-color: @message-color;
+
+    // background-color: red;
+}
+
+textbox {
+    padding: 0.3em 0.8em 0.8em 0.8em;
+    text-color: @text-color-normal;
+
+
+    // background-color: blue;
+}
