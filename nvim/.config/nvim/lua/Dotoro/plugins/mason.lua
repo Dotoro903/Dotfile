@@ -28,6 +28,7 @@ return {
 					"dockerls",
 					"emmet_language_server",
 					"html",
+					"sqls",
 				},
 				automatic_installation = true,
 				-- automatic_enable = false,
@@ -45,6 +46,7 @@ return {
 					"stylua",
 					"eslint_d",
 					"shfmt",
+					"sql-formatter",
 				},
 				auto_update = false,
 			})

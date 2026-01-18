@@ -52,6 +52,7 @@ return {
 					"yaml",
 					"markdown",
 					"tsx",
+					"sql",
 				},
 				sync_install = false,
 				modules = {},
