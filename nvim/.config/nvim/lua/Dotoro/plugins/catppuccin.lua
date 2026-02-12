@@ -25,7 +25,7 @@ return {
             no_bold = false,               -- Force no bold
             no_underline = false,          -- Force no underline
             styles = {                     -- Handles the styles of general hi groups (see `:h highlight-args`):
-                comments = { "italic" },   -- Change the style of comments
+                -- comments = { "italic" },   -- Change the style of comments
                 conditionals = { "italic" },
                 loops = {},
                 functions = {},
@@ -74,7 +74,7 @@ return {
                         ['@variable']                = { fg = "#e0def4" },
                         ['@function.builtin']        = { fg = '#f38ba8' },
 
-                        Comment                      = { fg = "#6C6C8C" },
+                        Comment                      = { fg = "#9A9AC8" },
 
                         Repeat                       = { fg = "#89b4f4" },
                         Conditional                  = { fg = "#89b4f4" },
