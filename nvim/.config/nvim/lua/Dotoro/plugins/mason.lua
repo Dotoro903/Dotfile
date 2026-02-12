@@ -29,6 +29,7 @@ return {
 					"emmet_language_server",
 					"html",
 					"sqls",
+					"gopls",
 				},
 				automatic_installation = true,
 				-- automatic_enable = false,
@@ -47,6 +48,7 @@ return {
 					"eslint_d",
 					"shfmt",
 					"sql-formatter",
+					"golangci-lint",
 				},
 				auto_update = false,
 			})
