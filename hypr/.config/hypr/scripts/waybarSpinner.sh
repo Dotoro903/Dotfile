@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# Waybar custom module용 초간단 ASCII 스피너
-# 환경변수:
-#   SPINNER_INTERVAL : 프레임 간격(초). 기본 0.12
-#   SPINNER_PREFIX   : 앞에 붙일 문자열(옵션)
-#   SPINNER_SUFFIX   : 뒤에 붙일 문자열(옵션)
 
 set -Eeuo pipefail
 export PATH="/usr/bin:/usr/local/bin:$PATH"
