@@ -21,7 +21,10 @@ vim.keymap.set("n", "<leader><CR>", "o<ESC>", { noremap = true })
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { noremap = true, silent = true, desc = "Trigger completion" })
 vim.keymap.set("i", "<C-o>", "<C-y>", { noremap = true, silent = true, desc = "Select completion" })
 
--- tab control
+-- tab
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
+
+-- split control
 vim.keymap.set("n", "<A-L>", ":vsp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-J>", ":split<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-W>", ":vsp<CR>", { noremap = true, silent = true })
