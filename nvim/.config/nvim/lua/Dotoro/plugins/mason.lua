@@ -47,6 +47,7 @@ return {
 					"stylua",
 					"eslint_d",
 					"shfmt",
+					"ruff",
 					"sql-formatter",
 					"golangci-lint",
 				},
