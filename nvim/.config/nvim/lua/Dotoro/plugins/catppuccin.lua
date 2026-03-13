@@ -111,6 +111,6 @@ return {
         vim.api.nvim_set_hl(0, '@keyword.import.cpp', { link = 'Import' })
         vim.api.nvim_set_hl(0, '@keyword.import', { link = 'Import' })
 
-        vim.cmd.colorscheme "catppuccin"
+        vim.cmd.colorscheme "catppuccin-nvim"
     end,
 }
