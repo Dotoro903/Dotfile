@@ -45,7 +45,5 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>lS", ":LiveServerStop<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>aa", ":CopilotChatToggle<CR>", { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
