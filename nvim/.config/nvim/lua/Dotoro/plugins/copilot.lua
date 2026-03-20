@@ -51,7 +51,11 @@ return {
 		},
 		build = "make tiktoken",
 		opts = {
-			-- See Configuration section for options
+            window = {
+                layout = "vertical",
+                width = 0.35,
+                border = "rounded",
+            },
 		},
 		keys = {
 			{ "<leader>aa", "<cmd>CopilotChatToggle<cr>", desc = "Open Copilot Chat" },
