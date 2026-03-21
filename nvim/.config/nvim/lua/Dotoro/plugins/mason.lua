@@ -30,6 +30,8 @@ return {
 					"html",
 					"sqls",
 					"gopls",
+                    "cssls",
+                    "tailwindcss",
 				},
 				automatic_installation = true,
 				-- automatic_enable = false,
