@@ -27,11 +27,14 @@ return {
 
 		vim.lsp.config["lua_ls"] = { capabilities = capabilities }
 		vim.lsp.config["clangd"] = { capabilities = capabilities }
-		vim.lsp.config["emmet_language_server"] = { capabilities = capabilities }
 		vim.lsp.config["docker_language_server"] = { capabilities = capabilities }
 		vim.lsp.config["dockerls"] = { capabilities = capabilities }
 		vim.lsp.config["sql"] = { capabilities = capabilities }
 
+        vim.lsp.config["emmet_language_server"] = {
+            capabilities = capabilities,
+            filetypes = { "html", "css", "tsx", "jsx", "typescriptreact", "javascriptreact" },
+        }
 		vim.lsp.config["pyright"] = {
 			capabilities = capabilities,
 		}
