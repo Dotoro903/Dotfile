@@ -17,6 +17,29 @@ return {
 		end,
 	},
 	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			local select = require("nvim-treesitter-textobjects.select")
+
+			local keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ar"] = "@block.outer",
+				["ir"] = "@block.inner",
+				["av"] = "@assignment.rhs",
+				["iv"] = "@assignment.rhs",
+			}
+
+			for key, query in pairs(keymaps) do
+				vim.keymap.set({ "x", "o" }, key, function()
+					select.select_textobject(query, "textobjects")
+				end)
+			end
+		end,
+	},
+	{
 
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
@@ -28,9 +51,24 @@ return {
 		config = function()
 			vim.g.nvim_treesitter = {
 				ensure_installed = {
-					"c", "cpp", "lua", "vim", "vimdoc", "query",
-					"javascript", "typescript", "python", "rust", "go",
-					"html", "css", "json", "yaml", "markdown", "tsx", "sql",
+					"c",
+					"cpp",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"javascript",
+					"typescript",
+					"python",
+					"rust",
+					"go",
+					"html",
+					"css",
+					"json",
+					"yaml",
+					"markdown",
+					"tsx",
+					"sql",
 				},
 				auto_install = true,
 				highlight = { enable = true },
