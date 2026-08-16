@@ -1,42 +1,41 @@
 return {
-	"neovim/nvim-lspconfig",
+	"neovim/nvim-lspconfig", -- kept only as a source of server definitions (cmd/filetypes/root_markers)
 	dependencies = {
 		{
 			"folke/lazydev.nvim",
-			ft = "lua", -- only load on lua files
+			ft = "lua",
 			opts = {
 				library = {
-					-- See the configuration section for more details
-					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
 			},
 		},
 	},
-
 	config = function()
 		local function disable_formatting(client)
 			client.server_capabilities.documentFormattingProvider = false
 			client.server_capabilities.documentRangeFormattingProvider = false
 		end
 
-		-- local config = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		capabilities.workspace = capabilities.workspace or {}
 		capabilities.workspace.didChangeWatchedFiles = { dynamicRegistration = true }
 
-		vim.lsp.config["lua_ls"] = { capabilities = capabilities }
-		vim.lsp.config["clangd"] = { capabilities = capabilities }
-		vim.lsp.config["docker_language_server"] = { capabilities = capabilities }
-		vim.lsp.config["dockerls"] = { capabilities = capabilities }
-		vim.lsp.config["sql"] = { capabilities = capabilities }
+		local servers = {
+			"lua_ls",
+			"clangd",
+			"docker_language_server",
+			"dockerls",
+			"sql",
+			"pyright",
+		}
+		for _, name in ipairs(servers) do
+			vim.lsp.config[name] = { capabilities = capabilities }
+		end
 
-        vim.lsp.config["emmet_language_server"] = {
-            capabilities = capabilities,
-            filetypes = { "html", "css", "tsx", "jsx", "typescriptreact", "javascriptreact" },
-        }
-		vim.lsp.config["pyright"] = {
+		vim.lsp.config["emmet_language_server"] = {
 			capabilities = capabilities,
+			filetypes = { "html", "css", "tsx", "jsx", "typescriptreact", "javascriptreact" },
 		}
 
 		vim.lsp.config["ts_ls"] = {
@@ -45,41 +44,52 @@ return {
 				disable_formatting(client)
 			end,
 			settings = {
-				ts_ls = {
-					quiet = true,
-				},
+				ts_ls = { quiet = true },
 			},
 		}
+
 		vim.lsp.config["html"] = {
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				disable_formatting(client)
 			end,
 		}
+
 		vim.lsp.config["cssls"] = {
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				disable_formatting(client)
 			end,
 			settings = {
-				css = {
-					lint = {
-						unknownAtRules = "ignore",
-					},
-				},
+				css = { lint = { unknownAtRules = "ignore" } },
 			},
 		}
+
 		vim.lsp.config["eslint"] = {
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				disable_formatting(client)
 			end,
 			settings = {
-				eslint = {
-					quiet = true,
-				},
+				eslint = { quiet = true },
 			},
 		}
+
+		-- explicitly enable everything you just configured
+		vim.lsp.enable({
+			"lua_ls",
+			"clangd",
+			"docker_language_server",
+			"dockerls",
+			"sql",
+			"pyright",
+			"emmet_language_server",
+			"ts_ls",
+			"html",
+			"cssls",
+			"eslint",
+		})
+
 		vim.diagnostic.config({
 			virtual_text = true,
 		})

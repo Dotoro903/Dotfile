@@ -21,17 +21,20 @@ return {
 		branch = "main",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			local select = require("nvim-treesitter-textobjects.select")
+			require("nvim-treesitter-textobjects").setup({
+				select = { lookahead = true },
+				move = { set_jumps = true },
+			})
 
+			local select = require("nvim-treesitter-textobjects.select")
 			local keymaps = {
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
 				["ar"] = "@block.outer",
 				["ir"] = "@block.inner",
 				["av"] = "@assignment.rhs",
-				["iv"] = "@assignment.rhs",
+				["iv"] = "@assignment.lhs", -- was duplicated as .rhs, check with :InspectTree
 			}
-
 			for key, query in pairs(keymaps) do
 				vim.keymap.set({ "x", "o" }, key, function()
 					select.select_textobject(query, "textobjects")
@@ -40,49 +43,26 @@ return {
 		end,
 	},
 	{
-
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		lazy = false,
 		build = ":TSUpdate",
-		dependencies = {
-			"neovim-treesitter/treesitter-parser-registry",
-		},
 		config = function()
-			vim.g.nvim_treesitter = {
-				ensure_installed = {
-					"c",
-					"cpp",
-					"lua",
-					"vim",
-					"vimdoc",
-					"query",
-					"javascript",
-					"typescript",
-					"python",
-					"rust",
-					"go",
-					"html",
-					"css",
-					"json",
-					"yaml",
-					"markdown",
-					"tsx",
-					"sql",
-				},
-				auto_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "gnn",
-						node_incremental = "grn",
-						scope_incremental = "grc",
-						node_decremental = "grm",
-					},
-				},
+			local parsers = {
+				"c", "cpp", "lua", "vim", "vimdoc", "query",
+				"javascript", "typescript", "python", "rust", "go",
+				"html", "css", "json", "yaml", "markdown", "tsx", "sql",
 			}
+			require("nvim-treesitter").install(parsers)
+
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					local ok = pcall(vim.treesitter.start)
+					if ok then
+						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end,
+			})
 		end,
 	},
 }

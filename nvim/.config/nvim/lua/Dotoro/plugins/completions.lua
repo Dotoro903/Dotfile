@@ -1,123 +1,51 @@
 return {
 	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
-	{
-		"saadparwaiz1/cmp_luasnip",
-	},
-	{
 		"L3MON4D3/LuaSnip",
-		-- version = "v2.*",
-		-- build = "make install_jsregexp",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			-- "rafamadriz/friendly-snippets",
-
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-				require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/Dotoro/snippets" })
-			end,
-		},
+		version = "v2.*",
+		build = "make install_jsregexp",
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/Dotoro/snippets" })
+		end,
 	},
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
+		version = "1.*",
+		dependencies = { "L3MON4D3/LuaSnip" },
+		opts_extend = { "sources.default" },
+		opts = {
+			-- "super-tab" preset replicates your old Tab/S-Tab behavior:
+			-- Tab expands/jumps snippet if possible, else selects next item, else inserts tab
+			keymap = {
+				preset = "default",
+				["<CR>"] = { "select_and_accept", "fallback" },
+			},
 
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
+			snippets = { preset = "luasnip" },
 
-			cmp.setup({
-				snippet = {
-					-- REQUIRED - you must specify a snippet engine
-					expand = function(args)
-						luasnip.lsp_expand(args.body) -- For `luasnip` users.
-					end,
-				},
-				opts = {
-					completion = { completeopt = "menu,menuone,noselect" },
-				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			completion = {
+				documentation = { auto_show = true, auto_show_delay_ms = 200 },
+				menu = { border = "rounded" },
+				list = { selection = { preselect = false } },
+			},
 
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-
-					-- ["<Tab>"] = cmp.mapping(function(fallback)
-					--     if cmp.visible() then
-					--         cmp.select_next_item()
-					--     elseif luasnip.expand_or_jumpable() then
-					--         luasnip.expand_or_jump()
-					--     else
-					--         fallback()
-					--     end
-					-- end, { "i", "s" }),
-					--
-					-- ["<S-Tab>"] = cmp.mapping(function(fallback)
-					--     if cmp.visible() then
-					--         cmp.select_prev_item()
-					--     elseif luasnip.jumpable(-1) then
-					--         luasnip.jump(-1)
-					--     else
-					--         fallback()
-					--     end
-					-- end, { "i", "s" }),
-				}),
-
-				sorting = {
-					priority_weight = 2,
-					comparators = {
-						cmp.config.compare.exact,
-						cmp.config.compare.length,
-						cmp.config.compare.offset,
-						cmp.config.compare.score,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.order,
-					},
-				},
-				sources = cmp.config.sources({
-					{
-						name = "nvim_lsp",
-						priority = 1000,
-						entry_filter = function(entry)
-							-- allow emmet (Text kind) through
-							if
-								entry.source.source.client
-								and entry.source.source.client.name == "emmet_language_server"
-							then
-								return true
-							end
-							return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lsp = {
+						-- your emmet-allow-Text-kind filter, ported
+						transform_items = function(_, items)
+							return vim.tbl_filter(function(item)
+								local client = vim.lsp.get_client_by_id(item.client_id)
+								if client and client.name == "emmet_language_server" then
+									return true
+								end
+								return item.kind ~= require("blink.cmp.types").CompletionItemKind.Text
+							end, items)
 						end,
 					},
-					{ name = "luasnip", priority = 750 },
-					{ name = "buffer", priority = 500 },
-					{ name = "path", priority = 250 },
-				}),
-			})
-		end,
+				},
+			},
+		},
 	},
 }
