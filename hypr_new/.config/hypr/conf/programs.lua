@@ -22,5 +22,5 @@ return {
     webBrowser_WithProfileManager = "firefox --ProfileManager",
 
     -- youtube music desktop app
-    musicPlayer = "chromium",
+    musicPlayer = "spotify",
 }
