@@ -33,6 +33,14 @@ return {
 			vim.lsp.config[name] = { capabilities = capabilities }
 		end
 
+		vim.lsp.config["clangd"] = {
+			cmd = { "clangd" },
+			filetypes = { "c", "cpp" },
+			init_options = {
+				fallbackFlags = { "-std=c++20" },
+			},
+		}
+
 		vim.lsp.config["emmet_language_server"] = {
 			capabilities = capabilities,
 			filetypes = { "html", "css", "tsx", "jsx", "typescriptreact", "javascriptreact" },
@@ -75,6 +83,16 @@ return {
 			},
 		}
 
+		vim.lsp.config["qmlls"] = {
+			cmd = { "qmlls6" },
+			filetypes = { "qml" },
+			-- root_markers = { "*.qmlproject", ".git" },
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				client.server_capabilities.semanticTokensProvider = nil
+			end,
+		}
+
 		-- explicitly enable everything you just configured
 		vim.lsp.enable({
 			"lua_ls",
@@ -88,6 +106,7 @@ return {
 			"html",
 			"cssls",
 			"eslint",
+			"qmlls",
 		})
 
 		vim.diagnostic.config({
